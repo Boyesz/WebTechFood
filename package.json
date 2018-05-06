@@ -1,6 +1,6 @@
 {
-  "name": "carRental",
-  "description": "Car Rental example for Project Assesment.",
+  "name": "FoodManager",
+  "description": "Food Manager School Project.",
   "version": "0.0.1",
   "dependencies": {
     "express": "^4.16.2",
