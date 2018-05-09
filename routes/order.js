@@ -1,21 +1,17 @@
 var mongoose = require('mongoose');
-
-var db = mongoose.createConnection('mongodb://localhost:27017/Manager', {autoIndex : true});
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    // we're connected!
-    console.log('MongoDB is Open');
-});
-
+var db = require('./DB');
 
 var Schema = mongoose.Schema;
 
 var OrderSchema = new Schema({
-    _id : Schema.ObjectId,
+    _id : Schema.Types.ObjectId,
     totalCost : Number,
     status : String,
     received : Boolean,
-    fulfilled: String
+    fulfilled: String,
+    food_fk : [{type: Schema.Types.ObjectId , ref: 'food'}],
+    employee_fk : { type: Schema.Types.ObjectId, ref: 'employee'},
+    customer_fk: { type: Schema.Types.ObjectId, ref: 'customer'}
 });
 
-module.exports = db.model('orders',OrderSchema);
+module.exports = db.model('order',OrderSchema);
