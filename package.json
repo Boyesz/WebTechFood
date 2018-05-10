@@ -10,6 +10,7 @@
     "bootstrap-sass": "^3.3.7",
     "jquery": "3.3.1",
     "bowserify": "^10.2.1",
-    "uglify-js": "^3.3.21"
+    "uglify-js": "^3.3.21",
+    "font-awesome": "4.7.0"
   }
 }

@@ -21,9 +21,10 @@ router.post('customer/orderFood',function (req,res) {
         _id: new mongoose.Types.ObjectId(),
         fulfilled : req.body['fulfilled'],
         totalCost : req.body['totalCost'],
-        status : 'open',
+        status : 'Open',
         received : false,
-        food_fk : req.body['food_fk']
+        food_fk : req.body['food_fk'],
+        customer_fk : req.body['customer_fk']
     }, function (err,doc) {
         if(err){
             return console.log(err);

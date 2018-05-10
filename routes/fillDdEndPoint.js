@@ -42,9 +42,9 @@ router.get('/adminDB/addDatas',function(req,res){
         order.create({
             _id : order_id_gen,
             totalCost : i*100,
-            status : 'Open',
-            received : false,
-            fulfilled: 'No',
+            status : 'Close',
+            received : true,
+            fulfilled: 'Yes',
             food_fk : food_id_gen,
             employee_fk : employee_id_gen,
             customer_fk : customer_id_gen
