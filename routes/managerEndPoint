@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var food = require('./food');
+var bartender = require('./bartender');
 var order = require('./order');
+var customer = require('./customer');
 var mongoose = require('mongoose');
 
 router.get('/manager/queryOrders',function(req,res){
@@ -17,6 +19,23 @@ router.get('/manager/queryOrders',function(req,res){
     });
 });
 
+/*router.get('/manager/countCustomer',function(req,res) {
+    customer.count({}, function( err, count){
+        res.sendStatus(count);
+    })
+});
+router.get('/manager/countOrder',function(req,res){
+    order.count({}, function( err, count){
+        res.sendStatus(count);
+    })
+});
+
+router.get('/manager/countEmployee',function(req,res){
+    bartender.count({}, function( err, count){
+        res.sendStatus(count);
+    })
+});
+*/
 router.get('/manager/showMoneyStatistic',function (req,res) {
     /*order.find({}).sum('totalCost').populate('food').group('food.type').exec(function (err, doc) {
         res.status(200).send(doc);
@@ -41,6 +60,6 @@ router.get('/manager/showMoneyStatistic',function (req,res) {
 
 router.get('manager/showTrafficStatistic',function (req,res) {
 
-})
+});
 
 module.exports = router;

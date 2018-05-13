@@ -21,7 +21,7 @@ function listDrinks() {
 global.listDrinks = listDrinks;
 
 function listFoods() {
-    $("table.table").empty();
+    $("table.list").empty();
     var dataWait;
     $.ajax({
         type: "GET",
@@ -30,7 +30,7 @@ function listFoods() {
         dataType: "json",
         success: function(data){dataWait = data;
             $.each(dataWait, function(i, data){
-                $("table.table").append("<tr><td>" + data._id + "</td><td>" + data.name + "</td><td>" + data.price + "FT" + "   "+" </td><td><button onclick='newOrder(this.name)' id=foodBtn name="+ data.name +" >+</button> </td></tr>");
+                $("table.list").append("<tr><td>" + data._id + "</td><td>" + data.name + "</td><td>" + data.price + "FT" + "   "+" </td><td><button onclick='newOrder(this.name)' id=foodBtn name="+ data.name +" >+</button> </td></tr>");
             })
         },
         failure: function(errMsg) {
@@ -153,5 +153,65 @@ function acceptJob(id){
 }
 
 global.acceptJob = acceptJob;
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    var orderCount;
+    var employeeCount;
+    var customerCount;
+    $.ajax({
+        type: "GET",
+        url: "/manager/countOrder",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            orderCount = data;
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+    $.ajax({
+        type: "GET",
+        url: "/manager/countCustomer",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            customerCount = data;
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+    $.ajax({
+        type: "GET",
+        url: "/manager/countEmployee",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            employeeCount = data;
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+
+    var data = google.visualization.arrayToDataTable([
+        ['Peoples', 'Count'],
+        ['Orders', orderCount],
+        ['Customers', customerCount],
+        ['Employees', employeeCount]
+    ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'My Average Day', 'width':550, 'height':400};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}
+
+
 
 
