@@ -12,5 +12,11 @@
     "bowserify": "^10.2.1",
     "uglify-js": "^3.3.21",
     "font-awesome": "4.7.0"
+  },
+  "scripts": {
+    "js": "browserify js/bundle.js | uglifyjs > public/js/bundle.js",
+    "css": "sass scss/buttonAppearence.scss public/css/style.css",
+    "prestart": "npm run css && npm run js",
+    "start": "node app.js"
   }
 }

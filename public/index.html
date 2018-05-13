@@ -13,14 +13,28 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
     <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
+    <script src="/js/bundle.js">
+    </script>
+
+    <script src="/js/bartender.js">
+    </script>
+
+    <script>
+        listDrinks();
+    </script>
+
+    <script>
+        listOpenJobs();
+    </script>
 </head>
 
 <body id="page-top">
@@ -73,9 +87,9 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2>Manager</h2>
-                <p>//TODOShowStatistic1</p>
-                <p>//TODOShowStatistic2</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for easy customization!</p>
+                <p></p>
+                <p></p>
+                <p></p>
             </div>
         </div>
     </div>
@@ -84,9 +98,16 @@
 <!-- Download Section -->
 <section id="download" class="download-section content-section text-center">
     <div class="container">
+
+        <button class="listThings" onclick="listDrinks()">List Drinks</button><button class="listThings" onclick="listFoods()">List Foods</button><br><br><br>
+        <br><br><br>
         <div class="col-lg-8 mx-auto">
             <h2>Customer</h2>
-            <p>//TODO</p>
+            <p>rendelő neve</p><input id="customerNameBox">
+            <customerContainer>
+                <table class="table list"></table>
+            </customerContainer>
+            <p></p>
         </div>
     </div>
 </section>
@@ -97,9 +118,13 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2>Bartender</h2>
-                <p>Feel free to leave us a comment on the
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/">Grayscale template overview page</a>
-                    on Start Bootstrap to give some feedback about this theme!</p>
+                <p>
+                <div class="container">
+                <div class="col-lg-8 mx-auto">
+                <table class="table order"></table>
+                </div>
+            </div>
+                </p>
             </div>
         </div>
     </div>
@@ -117,9 +142,6 @@
 
 <!-- Plugin JavaScript -->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
 <!-- Custom scripts for this template -->
 <script src="js/grayscale.min.js"></script>

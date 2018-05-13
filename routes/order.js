@@ -9,8 +9,8 @@ var OrderSchema = new Schema({
     status : String,
     received : Boolean,
     fulfilled: String,
-    food_fk : [{type: Schema.Types.ObjectId , ref: 'food'}],
-    employee_fk : { type: Schema.Types.ObjectId, ref: 'employee'},
+    food_fk : {type: Schema.Types.ObjectId , ref: 'food'},
+    employee_fk: { type: Schema.Types.ObjectId, ref: 'employee'},
     customer_fk: { type: Schema.Types.ObjectId, ref: 'customer'}
 });
 

@@ -16,7 +16,7 @@ router.post('customer/createFood',function (req,res) {
         }
         console.log(err);
         console.log(doc);
-        res.status(415).send(err +' '+doc);
+        res.status(200).send(doc);
     });
 })
 
