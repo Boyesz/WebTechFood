@@ -153,65 +153,59 @@ function acceptJob(id){
 }
 
 global.acceptJob = acceptJob;
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
-    var orderCount;
-    var employeeCount;
-    var customerCount;
+function showProfitInTable() {
+    //Calculate TotalCost
+    var dataWait;
+    $("table.order").empty();
+
     $.ajax({
         type: "GET",
-        url: "/manager/countOrder",
+        url: "/manager/profit",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){
-            orderCount = data;
-        },
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });
-    $.ajax({
-        type: "GET",
-        url: "/manager/countCustomer",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data){
-            customerCount = data;
-        },
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });
-    $.ajax({
-        type: "GET",
-        url: "/manager/countEmployee",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data){
-            employeeCount = data;
+        success: function(data){dataWait = data;
+            $.each(dataWait, function(i, data){
+                $("table.manager").append("<tr><td>" + " Next Profit " + "</td><td>" + data.totalPrice + "</td></tr>");
+            })
         },
         failure: function(errMsg) {
             alert(errMsg);
         }
     });
 
-    var data = google.visualization.arrayToDataTable([
-        ['Peoples', 'Count'],
-        ['Orders', orderCount],
-        ['Customers', customerCount],
-        ['Employees', employeeCount]
-    ]);
+    $.ajax({
+        type: "GET",
+        url: "/manager/cleanProfit",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){dataWait = data;
+            $.each(dataWait, function(i, data){
+                $("table.manager").append("<tr><td>" + " Clean Profit " + "</td><td>" + data.totalPriceS + "</td></tr>");
+            })
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
 
-    // Optional; add a title and set the width and height of the chart
-    var options = {'title':'My Average Day', 'width':550, 'height':400};
 
-    // Display the chart inside the <div> element with id="piechart"
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-    chart.draw(data, options);
+    $.ajax({
+        type: "GET",
+        url: "/manager/sumProfit",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){dataWait = data;
+            $.each(dataWait, function(i, data){
+                $("table.manager").append("<tr><td>" + " Sum Profit " + "</td><td>" + data.totalPrice + "</td></tr>");
+            })
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
 }
 
-
+global.showProfitInTable = showProfitInTable;
 
 

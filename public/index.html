@@ -24,7 +24,7 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <script src="/js/bundle.js">
+    <script src="./js/bundle.js">
     </script>
 
     <script>
@@ -86,10 +86,9 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2>Manager</h2>
-                <button class="listThings" onclick="drawCharts()">Show Chart</button><button class="listThings" onclick="queryAllOrders()">Query Orders</button><button class="listThings" onclick="showStatistics()">Show Statistics</button><br><br><br>
+                <button class="listThings" onclick="drawCharts()">Show Chart</button><button class="listThings" onclick="queryAllOrders()">Query Orders</button><button class="listThings" onclick="showProfitInTable()">Show Statistics</button><br><br><br>
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <div id="chart_div"></div>
-                <div id="piechart"></div>
+                <table class="table manager"></table>
             </div>
         </div>
     </div>

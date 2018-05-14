@@ -12,8 +12,7 @@
   transition-duration: 0.4s;
   text-decoration: none;
   overflow: hidden;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .listThings:after {
   content: "";
@@ -25,15 +24,13 @@
   margin-left: -20px !important;
   margin-top: -120%;
   opacity: 0;
-  transition: all 0.8s;
-}
+  transition: all 0.8s; }
 
 .listThings:active:after {
   padding: 0;
   margin: 0;
   opacity: 1;
-  transition: 0s;
-}
+  transition: 0s; }
 
 .newOrderClass {
   position: relative;
@@ -49,8 +46,7 @@
   transition-duration: 0.4s;
   text-decoration: none;
   overflow: hidden;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .acceptOrderClass {
   position: relative;
@@ -66,7 +62,6 @@
   transition-duration: 0.4s;
   text-decoration: none;
   overflow: hidden;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
-/*# sourceMappingURL=public/css/style.css.map */
+/*# sourceMappingURL=style.css.map */
