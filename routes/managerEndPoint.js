@@ -19,8 +19,10 @@ router.get('/manager/queryOrders',function(req,res){
     });
 });
 
-router.get('manager/showTrafficStatistic',function (req,res) {
-
+router.get('/manager/listOrders',function(req,res){
+    order.find({}).populate('customer_fk').populate('food_fk').exec(function(err, doc) {
+        res.status(200).send(doc);
+    });
 });
 
 module.exports = router;

@@ -157,17 +157,15 @@ global.acceptJob = acceptJob;
 function showProfitInTable() {
     //Calculate TotalCost
     var dataWait;
-    $("table.order").empty();
+    $("table.manager").empty();
 
     $.ajax({
         type: "GET",
         url: "/manager/profit",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){dataWait = data;
-            $.each(dataWait, function(i, data){
+        success: function(data){
                 $("table.manager").append("<tr><td>" + " Next Profit " + "</td><td>" + data.totalPrice + "</td></tr>");
-            })
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -179,10 +177,8 @@ function showProfitInTable() {
         url: "/manager/cleanProfit",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){dataWait = data;
-            $.each(dataWait, function(i, data){
-                $("table.manager").append("<tr><td>" + " Clean Profit " + "</td><td>" + data.totalPriceS + "</td></tr>");
-            })
+        success: function(data){
+                $("table.manager").append("<tr><td>" + " Clean Profit " + "</td><td>" + data.totalPrice + "</td></tr>");
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -195,10 +191,8 @@ function showProfitInTable() {
         url: "/manager/sumProfit",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){dataWait = data;
-            $.each(dataWait, function(i, data){
+        success: function(data){
                 $("table.manager").append("<tr><td>" + " Sum Profit " + "</td><td>" + data.totalPrice + "</td></tr>");
-            })
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -208,4 +202,24 @@ function showProfitInTable() {
 
 global.showProfitInTable = showProfitInTable;
 
+function showAllOrders() {
+    //Calculate TotalCost
+    var dataWait;
+    $("table.manager").empty();
+    $.ajax({
+        type: "GET",
+        url: "/manager/listOrders",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){dataWait = data;
+            $.each(dataWait, function(i, data){
+                $("table.manager").append("<tr><td>" + data._id + "</td><td>" + data.customer_fk.name + "</td><td>" + data.food_fk.name + "</td></tr>");
+            })
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+}
 
+global.showAllOrders = showAllOrders;
