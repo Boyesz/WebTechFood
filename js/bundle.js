@@ -2,6 +2,7 @@
 function listDrinks() {
     $("table.list").empty();
     var dataWait;
+    $("table.list").append("<tr><td>id</td><td>Név</td><td>Ár</td></tr>");
     $.ajax({
         type: "GET",
         url: "/customer/listDrinks",
@@ -22,6 +23,7 @@ global.listDrinks = listDrinks;
 
 function listFoods() {
     $("table.list").empty();
+    $("table.list").append("<tr><td>id</td><td>Név</td><td>Ár</td></tr>");
     var dataWait;
     $.ajax({
         type: "GET",
@@ -118,6 +120,7 @@ function listOpenJobs() {
     //Calculate TotalCost
     var dataWait;
     $("table.order").empty();
+    $("table.order").append("<tr><td>id</td><td>Név</td><td>Étel</td></tr>");
     $.ajax({
         type: "GET",
         url: "/bartender/listOpenOrders",
